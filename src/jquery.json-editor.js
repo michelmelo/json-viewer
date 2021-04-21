@@ -1,4 +1,4 @@
-(function ($) {
+(function($) {
     function encodeJSONStr(str) {
         var encodeMap = {
             '"': '\\"',
@@ -10,9 +10,9 @@
             '\t': '\\t'
         };
 
-      return str.replace(/["\\\b\f\n\r\t]/g, function (match) {
-          return encodeMap[match];
-      });
+        return str.replace(/["\\\b\f\n\r\t]/g, function(match) {
+            return encodeMap[match];
+        });
     }
 
     function encodeJSON(json) {
@@ -45,16 +45,16 @@
 
     JsonEditor.prototype = {
         constructor: JsonEditor,
-        load: function (json) {
+        load: function(json) {
             this.$container.jsonViewer(encodeJSON(json), {
-                collapsed: this.options.defaultCollapsed,
-                withQuotes: true
-            })
-            .addClass('json-editor-blackbord')
-            .attr('contenteditable', !!this.options.editable);
+                    collapsed: this.options.defaultCollapsed,
+                    withQuotes: true
+                })
+                .addClass('json-editor-blackbord')
+                .attr('contenteditable', !!this.options.editable);
         },
-        get: function () {
-            try{
+        get: function() {
+            try {
                 this.$container.find('.collapsed').click();
                 return JSON.parse(this.$container.text());
             } catch (ex) {

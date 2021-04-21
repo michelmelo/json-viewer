@@ -1,0 +1,22 @@
+{
+  "name": "json-viewer",
+  "version": "1.0.0",
+  "description": "json viewer",
+  "main": "jsonviewer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michelmelo/json-viewer.git"
+  },
+  "keywords": [
+    "json"
+  ],
+  "author": "michel melo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/michelmelo/json-viewer/issues"
+  },
+  "homepage": "https://github.com/michelmelo/json-viewer#readme"
+}

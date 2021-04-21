@@ -2,7 +2,7 @@
  * jQuery json-viewer
  * @author: Alexandre Bodelot <alexandre.bodelot@gmail.com>
  */
-(function($){
+(function($) {
 
   /**
    * Check if arg is either an array with at least 1 element, or a dict with at least 1 key
@@ -17,8 +17,8 @@
    * @return boolean
    */
   function isUrl(string) {
-     var regexp = /^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
-     return regexp.test(string);
+    var regexp = /^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+    return regexp.test(string);
   }
 
   /**
@@ -34,17 +34,13 @@
         html += '<a href="' + json + '" class="json-string json-url">"' + json + '"</a>';
       else
         html += '<span class="json-string">"' + json + '"</span>';
-    }
-    else if (typeof json === 'number') {
+    } else if (typeof json === 'number') {
       html += '<span class="json-literal json-literal-number">' + json + '</span>';
-    }
-    else if (typeof json === 'boolean') {
+    } else if (typeof json === 'boolean') {
       html += '<span class="json-literal json-literal-boolean">' + json + '</span>';
-    }
-    else if (json === null) {
+    } else if (json === null) {
       html += '<span class="json-literal json-literal-null">null</span>';
-    }
-    else if (json instanceof Array) {
+    } else if (json instanceof Array) {
       if (json.length > 0) {
         html += '[<ol class="json-array">';
         for (var i = 0; i < json.length; ++i) {
@@ -61,26 +57,23 @@
           html += '</li>';
         }
         html += '</ol>]';
-      }
-      else {
+      } else {
         html += '[]';
       }
-    }
-    else if (typeof json === 'object') {
+    } else if (typeof json === 'object') {
       var key_count = Object.keys(json).length;
       if (key_count > 0) {
         html += '{<ul class="json-dict">';
         for (var key in json) {
           if (json.hasOwnProperty(key)) {
             html += '<li>';
-            var keyRepr = options.withQuotes
-              ? '<span class="json-string json-property">"' + key + '"</span>'
-              : '<span class="json-property">' + key + '</span>';
+            var keyRepr = options.withQuotes ?
+              '<span class="json-string json-property">"' + key + '"</span>' :
+              '<span class="json-property">' + key + '</span>';
             /* Add toggle button if item is collapsable */
             if (isCollapsable(json[key])) {
               html += '<a href class="json-toggle"></a>' + keyRepr;
-            }
-            else {
+            } else {
               html += keyRepr;
             }
             html += ': ' + json2html(json[key], options);
@@ -91,8 +84,7 @@
           }
         }
         html += '</ul>}';
-      }
-      else {
+      } else {
         html += '{}';
       }
     }
@@ -125,8 +117,7 @@
         target.toggle();
         if (target.is(':visible')) {
           target.siblings('.json-placeholder').remove();
-        }
-        else {
+        } else {
           var count = target.children('li').length;
           var placeholder = count + (count > 1 ? ' items' : ' item');
           target.after('<a href class="json-placeholder">' + placeholder + '</a>');
